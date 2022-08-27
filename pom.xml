@@ -1,0 +1,65 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<parent>
+		<groupId>de.voomdoon</groupId>
+		<artifactId>vd-parent</artifactId>
+		<version>0.1.0-SNAPSHOT</version>
+		<relativePath />
+	</parent>
+
+	<groupId>de.voomdoon.logging</groupId>
+	<artifactId>vd-log4j2-logging-connector</artifactId>
+	<version>0.1.0-SNAPSHOT</version>
+
+	<properties>
+		<skipTestJar>false</skipTestJar>
+		
+		<de.voomdoon.logging_vd-logging_version>[0.1.0-SNAPSHOT],[0.1.0,0.1.99]</de.voomdoon.logging_vd-logging_version>
+		<log4j_version>[2.17.1,2.17.99]</log4j_version>
+	</properties>
+
+	<dependencies>
+		<!-- + + + + + + + + + + compile dependencies + + + + + + + + + + -->
+		<!-- + + + + + internal voomdoon dependencies + + + + + -->
+		<dependency>
+			<groupId>de.voomdoon.logging</groupId>
+			<artifactId>vd-logging</artifactId>
+			<version>${de.voomdoon.logging_vd-logging_version}</version>
+		</dependency>
+		
+		<!-- + + + + + external dependencies + + + + + -->
+		<dependency>
+			<groupId>org.apache.logging.log4j</groupId>
+			<artifactId>log4j-api</artifactId>
+			<version>${log4j_version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.logging.log4j</groupId>
+			<artifactId>log4j-core</artifactId>
+			<version>${log4j_version}</version>
+		</dependency>
+
+		<!-- + + + + + + + + + + test dependencies + + + + + + + + + + -->
+		<!-- + + + + + internal voomdoon test dependencies + + + + + -->
+		<dependency>
+			<groupId>de.voomdoon.logging</groupId>
+			<artifactId>vd-logging</artifactId>
+			<version>${de.voomdoon.logging_vd-logging_version}</version>
+			<classifier>tests</classifier>
+			<scope>test</scope>
+		</dependency>
+
+		<!-- + + + + + external test dependencies + + + + + -->
+		<dependency>
+			<groupId>org.assertj</groupId>
+			<artifactId>assertj-core</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.junit.jupiter</groupId>
+			<artifactId>junit-jupiter-api</artifactId>
+		</dependency>
+		<!-- - - - - - - - - - - external test dependencies - - - - - - - - - - -->
+		<!-- - - - - - - - - - - test dependencies - - - - - - - - - - -->
+	</dependencies>
+</project>
