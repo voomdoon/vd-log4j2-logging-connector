@@ -6,6 +6,7 @@ import java.util.Objects;
 import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.core.config.Configurator;
 
 import de.voomdoon.logging.LogEvent;
 import de.voomdoon.logging.LogEventHandler;
@@ -33,6 +34,35 @@ public class Log4jLogEventHandler implements LogEventHandler {
 		LEVEL_MAPPING.put(LogLevel.WARN, Level.WARN);
 		LEVEL_MAPPING.put(LogLevel.ERROR, Level.ERROR);
 		LEVEL_MAPPING.put(LogLevel.FATAL, Level.FATAL);
+	}
+
+	/**
+	 * Returns whether executed at jUnit.
+	 * 
+	 * @return {@code true} if executed at jUnit, {@code true} otherwise.
+	 * @since 0.1.0
+	 */
+	public static boolean isAtJUnit() {
+		StackTraceElement[] stackTrace = Thread.currentThread().getStackTrace();
+
+		for (StackTraceElement element : stackTrace) {
+			if (element.getClassName().startsWith("org.junit.platform.launcher.core")) {
+				return true;
+			}
+		}
+
+		return false;
+	}
+
+	/**
+	 * DOCME add JavaDoc for constructor Log4jLogEventHandler
+	 * 
+	 * @since DOCME add inception version number
+	 */
+	public Log4jLogEventHandler() {
+		if (isAtJUnit()) {
+			Configurator.setRootLevel(Level.DEBUG);
+		}
 	}
 
 	/**
