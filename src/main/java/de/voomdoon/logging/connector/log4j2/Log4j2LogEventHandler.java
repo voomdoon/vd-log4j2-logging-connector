@@ -19,7 +19,7 @@ import de.voomdoon.logging.LogLevel;
  *
  * @since DOCME add inception version number
  */
-public class Log4jLogEventHandler implements LogEventHandler {
+public class Log4j2LogEventHandler implements LogEventHandler {
 
 	/**
 	 * @since 0.1.0
@@ -59,7 +59,7 @@ public class Log4jLogEventHandler implements LogEventHandler {
 	 * 
 	 * @since DOCME add inception version number
 	 */
-	public Log4jLogEventHandler() {
+	public Log4j2LogEventHandler() {
 		if (isAtJUnit()) {
 			Configurator.setRootLevel(Level.DEBUG);
 		}

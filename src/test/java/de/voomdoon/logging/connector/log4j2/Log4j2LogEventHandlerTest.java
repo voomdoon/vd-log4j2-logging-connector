@@ -22,15 +22,15 @@ import de.voomdoon.logging.test.TestLogEvent;
  *
  * @since DOCME add inception version number
  */
-class Log4jLogEventHandlerTest extends LogEventHandlerTest {
+class Log4j2LogEventHandlerTest extends LogEventHandlerTest {
 
 	/**
 	 * DOCME add JavaDoc for constructor Log4jLogEventHandlerTest
 	 * 
 	 * @since DOCME add inception version number
 	 */
-	public Log4jLogEventHandlerTest() {
-		super(new Log4jLogEventHandler());
+	public Log4j2LogEventHandlerTest() {
+		super(new Log4j2LogEventHandler());
 	}
 
 	/**
@@ -40,7 +40,7 @@ class Log4jLogEventHandlerTest extends LogEventHandlerTest {
 	void testHandleLogEvent_DEBUG_isPrinted() throws Exception {
 		OutputStream out = injectAndGetOutputStream();
 
-		new Log4jLogEventHandler().handleLogEvent(new TestLogEvent().setLevel(LogLevel.DEBUG).setMessage("test"));
+		new Log4j2LogEventHandler().handleLogEvent(new TestLogEvent().setLevel(LogLevel.DEBUG).setMessage("test"));
 
 		assertThat(out.toString()).contains("DEBUG");
 	}
@@ -52,7 +52,7 @@ class Log4jLogEventHandlerTest extends LogEventHandlerTest {
 	void testHandleLogEvent_ERROR_isPrinted() throws Exception {
 		OutputStream out = injectAndGetOutputStream();
 
-		new Log4jLogEventHandler().handleLogEvent(new TestLogEvent().setLevel(LogLevel.ERROR).setMessage("test"));
+		new Log4j2LogEventHandler().handleLogEvent(new TestLogEvent().setLevel(LogLevel.ERROR).setMessage("test"));
 
 		assertThat(out.toString()).contains("ERROR");
 	}
