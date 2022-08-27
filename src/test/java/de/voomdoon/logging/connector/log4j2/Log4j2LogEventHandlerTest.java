@@ -73,7 +73,7 @@ class Log4j2LogEventHandlerTest extends LogEventHandlerTest {
 				Object manager = FieldUtils.readField(appender, "manager", true);
 				FieldUtils.writeField(manager, "outputStream", out, true);
 			} catch (IllegalArgumentException | IllegalAccessException e) {
-				throw new RuntimeException("Error: " + e.getMessage(), e);
+				// ignore
 			}
 		});
 		return out;
