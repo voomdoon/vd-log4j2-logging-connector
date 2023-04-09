@@ -15,20 +15,21 @@
 	<properties>
 		<skipTestJar>false</skipTestJar>
 
-		<de.voomdoon.logging_vd-logging_version>[0.1.0-SNAPSHOT],[0.1.0,0.1.99]</de.voomdoon.logging_vd-logging_version>
-		<log4j_version>[2.17.1,2.17.99]</log4j_version>
+		<de.voomdoon.logging_vd-logging_version>0.1.0-SNAPSHOT</de.voomdoon.logging_vd-logging_version>
+		<log4j_version>2.20.0</log4j_version>
 	</properties>
 
 	<dependencies>
 		<!-- + + + + + + + + + + compile dependencies + + + + + + + + + + -->
-		<!-- + + + + + internal voomdoon dependencies + + + + + -->
+		<!-- + + + + + internal voomdoon compile dependencies + + + + + -->
 		<dependency>
 			<groupId>de.voomdoon.logging</groupId>
 			<artifactId>vd-logging</artifactId>
 			<version>${de.voomdoon.logging_vd-logging_version}</version>
 		</dependency>
+		<!-- - - - - - internal voomdoon compile dependencies - - - - - -->
 
-		<!-- + + + + + external dependencies + + + + + -->
+		<!-- + + + + + external compile dependencies + + + + + -->
 		<dependency>
 			<groupId>org.apache.logging.log4j</groupId>
 			<artifactId>log4j-api</artifactId>
@@ -39,6 +40,8 @@
 			<artifactId>log4j-core</artifactId>
 			<version>${log4j_version}</version>
 		</dependency>
+		<!-- - - - - - external compile dependencies - - - - - -->
+		<!-- - - - - - - - - - - compile dependencies - - - - - - - - - - -->
 
 		<!-- + + + + + + + + + + test dependencies + + + + + + + + + + -->
 		<!-- + + + + + internal voomdoon test dependencies + + + + + -->
@@ -49,25 +52,28 @@
 			<classifier>tests</classifier>
 			<scope>test</scope>
 		</dependency>
+		<!-- - - - - - internal voomdoon test dependencies - - - - - -->
 
 		<!-- + + + + + external test dependencies + + + + + -->
+		<dependency>
+			<groupId>org.assertj</groupId>
+			<artifactId>assertj-core</artifactId>
+			<version>3.24.2</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.junit.jupiter</groupId>
+			<artifactId>junit-jupiter-engine</artifactId>
+			<version>5.9.2</version>
+			<scope>test</scope>
+		</dependency>
 		<dependency>
 			<groupId>org.apache.commons</groupId>
 			<artifactId>commons-lang3</artifactId>
 			<version>[3.12.0,3.12.99]</version>
 			<scope>test</scope>
 		</dependency>
-		<dependency>
-			<groupId>org.assertj</groupId>
-			<artifactId>assertj-core</artifactId>
-			<scope>test</scope>
-		</dependency>
-		<dependency>
-			<groupId>org.junit.jupiter</groupId>
-			<artifactId>junit-jupiter-api</artifactId>
-			<scope>test</scope>
-		</dependency>
-		<!-- - - - - - - - - - - external test dependencies - - - - - - - - - - -->
+		<!-- - - - - - external test dependencies - - - - - -->
 		<!-- - - - - - - - - - - test dependencies - - - - - - - - - - -->
 	</dependencies>
 </project>
