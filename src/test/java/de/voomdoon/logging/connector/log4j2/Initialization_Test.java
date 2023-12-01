@@ -180,6 +180,7 @@ class Initialization_Test {
 	private void addAppender(Log4jTestAppender appender) {
 		LoggerContext context = (LoggerContext) org.apache.logging.log4j.LogManager.getContext(false);
 		AbstractConfiguration config = (AbstractConfiguration) context.getConfiguration();
+		appender.start();
 		config.addAppender(appender);
 
 		AppenderRef[] refs = new AppenderRef[] { AppenderRef.createAppenderRef(appender.getName(), null, null) };
