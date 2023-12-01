@@ -3,7 +3,7 @@ package de.voomdoon.logging.connector.log4j2;
 import static org.assertj.core.api.Assertions.assertThat;
 
 import java.io.Serializable;
-import java.util.LinkedList;
+import java.util.ArrayList;
 import java.util.List;
 
 import org.apache.logging.log4j.Level;
@@ -37,12 +37,12 @@ class Initialization_Test {
 	 *
 	 * @since 0.1.0
 	 */
-	public static class TestAppender implements Appender {
+	public static class Log4jTestAppender implements Appender {
 
 		/**
 		 * @since 0.1.0
 		 */
-		private List<LogEvent> logEvents;
+		private List<LogEvent> logEvents = new ArrayList<>();
 
 		/**
 		 * @since 0.1.0
@@ -57,9 +57,8 @@ class Initialization_Test {
 		/**
 		 * @since 0.1.0
 		 */
-		public TestAppender() {
-			logEvents = new LinkedList<>();
-			name = "jUnit" + System.nanoTime();
+		public Log4jTestAppender() {
+			name = "Initialization_Test_" + System.currentTimeMillis();
 		}
 
 		/**
@@ -169,7 +168,7 @@ class Initialization_Test {
 
 	@Test
 	void test() throws Exception {
-		TestAppender appender = new TestAppender();
+		Log4jTestAppender appender = new Log4jTestAppender();
 		addAppender(appender);
 
 		LogManager.getLogger(getClass()).info("test-message");
@@ -178,18 +177,19 @@ class Initialization_Test {
 				.extracting(Message::getFormattedMessage).isEqualTo("test-message");
 	}
 
-	private void addAppender(TestAppender appender) {
+	private void addAppender(Log4jTestAppender appender) {
 		LoggerContext context = (LoggerContext) org.apache.logging.log4j.LogManager.getContext(false);
 		AbstractConfiguration config = (AbstractConfiguration) context.getConfiguration();
 		config.addAppender(appender);
 
 		AppenderRef[] refs = new AppenderRef[] { AppenderRef.createAppenderRef(appender.getName(), null, null) };
 
+		@SuppressWarnings("deprecation")
 		LoggerConfig loggerConfig = LoggerConfig.createLogger(true, Level.ALL,
 				org.apache.logging.log4j.LogManager.ROOT_LOGGER_NAME, null, refs, null, config, null);
 
-		appender.start();
 		loggerConfig.addAppender(appender, null, null);
+		loggerConfig.start();
 		config.addLogger(org.apache.logging.log4j.LogManager.ROOT_LOGGER_NAME, loggerConfig);
 		context.updateLoggers();
 	}
