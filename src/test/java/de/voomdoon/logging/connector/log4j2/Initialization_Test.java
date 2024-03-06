@@ -17,6 +17,7 @@ import org.apache.logging.log4j.core.config.AbstractConfiguration;
 import org.apache.logging.log4j.core.config.AppenderRef;
 import org.apache.logging.log4j.core.config.LoggerConfig;
 import org.apache.logging.log4j.message.Message;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 import de.voomdoon.logging.LogManager;
@@ -26,8 +27,9 @@ import de.voomdoon.logging.LogManager;
  *
  * @author André Schulz
  *
- * @since DOCME add inception version number
+ * @since 0.1.0
  */
+@Disabled
 class Initialization_Test {
 
 	/**

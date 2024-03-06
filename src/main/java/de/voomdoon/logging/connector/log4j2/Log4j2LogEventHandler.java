@@ -6,7 +6,8 @@ import java.util.Objects;
 import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import org.apache.logging.log4j.core.config.Configurator;
+import org.apache.logging.log4j.message.Message;
+import org.apache.logging.log4j.message.TimestampMessage;
 
 import de.voomdoon.logging.LogEvent;
 import de.voomdoon.logging.LogEventHandler;
@@ -17,9 +18,81 @@ import de.voomdoon.logging.LogLevel;
  *
  * @author André Schulz
  *
- * @since DOCME add inception version number
+ * @since 0.1.0
  */
 public class Log4j2LogEventHandler implements LogEventHandler {
+
+	/**
+	 * DOCME add JavaDoc for Log4j2LogEventHandler
+	 *
+	 * @author André Schulz
+	 *
+	 * @since DOCME add inception version number
+	 */
+	private class MyMessage implements Message, TimestampMessage {
+
+		/**
+		 * @since DOCME add inception version number
+		 */
+		private static final long serialVersionUID = -1297102616611983237L;
+
+		/**
+		 * @since DOCME add inception version number
+		 */
+		private LogEvent logEvent;
+
+		/**
+		 * DOCME add JavaDoc for constructor MyMessage
+		 * 
+		 * @param logEvent
+		 * @since DOCME add inception version number
+		 */
+		public MyMessage(LogEvent logEvent) {
+			this.logEvent = logEvent;
+		}
+
+		/**
+		 * @since DOCME add inception version number
+		 */
+		@Override
+		public String getFormat() {
+			// TODO implement getFormat
+			throw new UnsupportedOperationException("'getFormat' not implemented at 'Message'!");
+		}
+
+		/**
+		 * @since DOCME add inception version number
+		 */
+		@Override
+		public String getFormattedMessage() {
+			return logEvent.getMessage().toString();
+		}
+
+		/**
+		 * @since DOCME add inception version number
+		 */
+		@Override
+		public Object[] getParameters() {
+			// TODO implement getParameters
+			throw new UnsupportedOperationException("'getParameters' not implemented at 'Message'!");
+		}
+
+		/**
+		 * @since DOCME add inception version number
+		 */
+		@Override
+		public Throwable getThrowable() {
+			return logEvent.getError();
+		}
+
+		/**
+		 * @since DOCME add inception version number
+		 */
+		@Override
+		public long getTimestamp() {
+			return logEvent.getTimestamp();
+		}
+	}
 
 	/**
 	 * @since 0.1.0
@@ -37,43 +110,26 @@ public class Log4j2LogEventHandler implements LogEventHandler {
 	}
 
 	/**
-	 * Returns whether executed at jUnit.
-	 * 
-	 * @return {@code true} if executed at jUnit, {@code true} otherwise.
-	 * @since 0.1.0
-	 */
-	public static boolean isAtJUnit() {
-		StackTraceElement[] stackTrace = Thread.currentThread().getStackTrace();
-
-		for (StackTraceElement element : stackTrace) {
-			if (element.getClassName().startsWith("org.junit.platform.launcher.core")) {
-				return true;
-			}
-		}
-
-		return false;
-	}
-
-	/**
-	 * DOCME add JavaDoc for constructor Log4jLogEventHandler
+	 * DOCME add JavaDoc for constructor Log4j2LogEventHandler
 	 * 
 	 * @since DOCME add inception version number
 	 */
 	public Log4j2LogEventHandler() {
-		if (isAtJUnit()) {
-			Configurator.setRootLevel(Level.DEBUG);
-		}
+		System.out.println("Log4j2LogEventHandler init");
 	}
 
 	/**
-	 * @since DOCME add inception version number
+	 * @since 0.1.0
 	 */
 	@Override
 	public void handleLogEvent(LogEvent logEvent) {
 		Objects.requireNonNull(logEvent, "logEvent");
 		Logger logger = LogManager.getLogger(logEvent.getSourceClass());
-		logger.log(LEVEL_MAPPING.get(logEvent.getLevel()), logEvent.getMessage());
 
-		// TODO implement handleLogEvent
+		Level level = LEVEL_MAPPING.get(logEvent.getLevel());
+
+		// FEATURE thread
+		// FEATURE class and line
+		logger.log(level, new MyMessage(logEvent));
 	}
 }
