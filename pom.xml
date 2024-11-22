@@ -16,7 +16,7 @@
 		<skipTestJar>false</skipTestJar>
 
 		<de.voomdoon.logging_vd-logging_version>0.1.0-SNAPSHOT</de.voomdoon.logging_vd-logging_version>
-		<log4j_version>2.24.1</log4j_version>
+		<log4j_version>2.24.2</log4j_version>
 	</properties>
 
 	<dependencies>
