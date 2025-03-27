@@ -27,17 +27,17 @@ public class Log4j2LogEventHandler implements LogEventHandler {
 	 *
 	 * @author André Schulz
 	 *
-	 * @since DOCME add inception version number
+	 * @since 0.1.0
 	 */
 	private class MyMessage implements Message, TimestampMessage {
 
 		/**
-		 * @since DOCME add inception version number
+		 * @since 0.1.0
 		 */
 		private static final long serialVersionUID = -1297102616611983237L;
 
 		/**
-		 * @since DOCME add inception version number
+		 * @since 0.1.0
 		 */
 		private LogEvent logEvent;
 
@@ -45,14 +45,14 @@ public class Log4j2LogEventHandler implements LogEventHandler {
 		 * DOCME add JavaDoc for constructor MyMessage
 		 * 
 		 * @param logEvent
-		 * @since DOCME add inception version number
+		 * @since 0.1.0
 		 */
 		public MyMessage(LogEvent logEvent) {
 			this.logEvent = logEvent;
 		}
 
 		/**
-		 * @since DOCME add inception version number
+		 * @since 0.1.0
 		 */
 		@Override
 		public String getFormat() {
@@ -61,7 +61,7 @@ public class Log4j2LogEventHandler implements LogEventHandler {
 		}
 
 		/**
-		 * @since DOCME add inception version number
+		 * @since 0.1.0
 		 */
 		@Override
 		public String getFormattedMessage() {
@@ -69,7 +69,7 @@ public class Log4j2LogEventHandler implements LogEventHandler {
 		}
 
 		/**
-		 * @since DOCME add inception version number
+		 * @since 0.1.0
 		 */
 		@Override
 		public Object[] getParameters() {
@@ -78,7 +78,7 @@ public class Log4j2LogEventHandler implements LogEventHandler {
 		}
 
 		/**
-		 * @since DOCME add inception version number
+		 * @since 0.1.0
 		 */
 		@Override
 		public Throwable getThrowable() {
@@ -86,7 +86,7 @@ public class Log4j2LogEventHandler implements LogEventHandler {
 		}
 
 		/**
-		 * @since DOCME add inception version number
+		 * @since 0.1.0
 		 */
 		@Override
 		public long getTimestamp() {
@@ -112,7 +112,7 @@ public class Log4j2LogEventHandler implements LogEventHandler {
 	/**
 	 * DOCME add JavaDoc for constructor Log4j2LogEventHandler
 	 * 
-	 * @since DOCME add inception version number
+	 * @since 0.1.0
 	 */
 	public Log4j2LogEventHandler() {
 		System.out.println("Log4j2LogEventHandler init");
