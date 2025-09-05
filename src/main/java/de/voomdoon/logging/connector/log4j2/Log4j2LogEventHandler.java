@@ -73,8 +73,7 @@ public class Log4j2LogEventHandler implements LogEventHandler {
 		 */
 		@Override
 		public Object[] getParameters() {
-			// TODO implement getParameters
-			throw new UnsupportedOperationException("'getParameters' not implemented at 'Message'!");
+			return null;
 		}
 
 		/**
