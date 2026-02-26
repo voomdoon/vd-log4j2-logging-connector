@@ -6,7 +6,6 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.core.Appender;
 import org.apache.logging.log4j.core.ErrorHandler;
 import org.apache.logging.log4j.core.Layout;
@@ -14,10 +13,7 @@ import org.apache.logging.log4j.core.LogEvent;
 import org.apache.logging.log4j.core.LoggerContext;
 import org.apache.logging.log4j.core.appender.DefaultErrorHandler;
 import org.apache.logging.log4j.core.config.AbstractConfiguration;
-import org.apache.logging.log4j.core.config.AppenderRef;
 import org.apache.logging.log4j.core.config.LoggerConfig;
-import org.apache.logging.log4j.message.Message;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 import de.voomdoon.logging.LogManager;
@@ -29,7 +25,6 @@ import de.voomdoon.logging.LogManager;
  *
  * @since 0.1.0
  */
-@Disabled
 class Initialization_Test {
 
 	/**
@@ -44,7 +39,7 @@ class Initialization_Test {
 		/**
 		 * @since 0.1.0
 		 */
-		private List<LogEvent> logEvents = new ArrayList<>();
+		private List<String> logEvents = new ArrayList<>();
 
 		/**
 		 * @since 0.1.0
@@ -68,7 +63,7 @@ class Initialization_Test {
 		 */
 		@Override
 		public void append(LogEvent logEvent) {
-			logEvents.add(logEvent);
+			logEvents.add(logEvent.getMessage().getFormattedMessage());
 		}
 
 		/**
@@ -85,14 +80,6 @@ class Initialization_Test {
 		@Override
 		public Layout<? extends Serializable> getLayout() {
 			throw new UnsupportedOperationException("'getLayout' not implemented at 'TestAppender'!");
-		}
-
-		/**
-		 * @return {@link List} of {@link LogEvent}.
-		 * @since 0.1.0
-		 */
-		public List<LogEvent> getLogEvents() {
-			return logEvents;
 		}
 
 		/**
@@ -168,6 +155,9 @@ class Initialization_Test {
 		}
 	}
 
+	/**
+	 * @since 0.2.0
+	 */
 	@Test
 	void test() {
 		Log4jTestAppender appender = new Log4jTestAppender();
@@ -175,25 +165,22 @@ class Initialization_Test {
 
 		LogManager.getLogger(getClass()).info("test-message");
 
-		assertThat(appender.logEvents).element(0).extracting(LogEvent::getMessage)
-				.extracting(Message::getFormattedMessage).isEqualTo("test-message");
+		assertThat(appender.logEvents).last().isEqualTo("test-message");
 	}
 
+	/**
+	 * @param appender
+	 *            {@link Log4jTestAppender}
+	 * @since 0.2.0
+	 */
 	private void addAppender(Log4jTestAppender appender) {
 		LoggerContext context = (LoggerContext) org.apache.logging.log4j.LogManager.getContext(false);
 		AbstractConfiguration config = (AbstractConfiguration) context.getConfiguration();
 		appender.start();
 		config.addAppender(appender);
 
-		AppenderRef[] refs = new AppenderRef[] { AppenderRef.createAppenderRef(appender.getName(), null, null) };
-
-		@SuppressWarnings("deprecation")
-		LoggerConfig loggerConfig = LoggerConfig.createLogger(true, Level.ALL,
-				org.apache.logging.log4j.LogManager.ROOT_LOGGER_NAME, null, refs, null, config, null);
-
-		loggerConfig.addAppender(appender, null, null);
-		loggerConfig.start();
-		config.addLogger(org.apache.logging.log4j.LogManager.ROOT_LOGGER_NAME, loggerConfig);
+		LoggerConfig rootLogger = config.getRootLogger();
+		rootLogger.addAppender(appender, null, null);
 		context.updateLoggers();
 	}
 }
