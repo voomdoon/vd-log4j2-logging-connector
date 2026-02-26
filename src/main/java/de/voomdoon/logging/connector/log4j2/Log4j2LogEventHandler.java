@@ -109,15 +109,6 @@ public class Log4j2LogEventHandler implements LogEventHandler {
 	}
 
 	/**
-	 * DOCME add JavaDoc for constructor Log4j2LogEventHandler
-	 * 
-	 * @since 0.1.0
-	 */
-	public Log4j2LogEventHandler() {
-		System.out.println("Log4j2LogEventHandler init");
-	}
-
-	/**
 	 * @since 0.1.0
 	 */
 	@Override
