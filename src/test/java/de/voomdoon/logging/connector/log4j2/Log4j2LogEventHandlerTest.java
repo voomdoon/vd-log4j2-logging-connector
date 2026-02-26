@@ -37,7 +37,7 @@ class Log4j2LogEventHandlerTest extends LogEventHandlerTest {
 	 * @since 0.1.0
 	 */
 	@Test
-	void testHandleLogEvent_causeExceptionMessage_isPrinted() throws Exception {
+	void testHandleLogEvent_causeExceptionMessage_isPrinted() {
 		OutputStream out = injectAndGetOutputStream();
 
 		new Log4j2LogEventHandler().handleLogEvent(new TestLogEvent().setLevel(LogLevel.DEBUG).setMessage("test")
@@ -50,7 +50,7 @@ class Log4j2LogEventHandlerTest extends LogEventHandlerTest {
 	 * @since 0.1.0
 	 */
 	@Test
-	void testHandleLogEvent_DEBUG_isPrinted() throws Exception {
+	void testHandleLogEvent_DEBUG_isPrinted() {
 		OutputStream out = injectAndGetOutputStream();
 
 		new Log4j2LogEventHandler().handleLogEvent(new TestLogEvent().setLevel(LogLevel.DEBUG).setMessage("test"));
@@ -62,7 +62,7 @@ class Log4j2LogEventHandlerTest extends LogEventHandlerTest {
 	 * @since 0.1.0
 	 */
 	@Test
-	void testHandleLogEvent_ERROR_isPrinted() throws Exception {
+	void testHandleLogEvent_ERROR_isPrinted() {
 		OutputStream out = injectAndGetOutputStream();
 
 		new Log4j2LogEventHandler().handleLogEvent(new TestLogEvent().setLevel(LogLevel.ERROR).setMessage("test"));
@@ -74,7 +74,7 @@ class Log4j2LogEventHandlerTest extends LogEventHandlerTest {
 	 * @since 0.1.0
 	 */
 	@Test
-	void testHandleLogEvent_exceptionMessage_isPrinted() throws Exception {
+	void testHandleLogEvent_exceptionMessage_isPrinted() {
 		OutputStream out = injectAndGetOutputStream();
 
 		new Log4j2LogEventHandler().handleLogEvent(new TestLogEvent().setLevel(LogLevel.DEBUG).setMessage("test")
@@ -87,7 +87,7 @@ class Log4j2LogEventHandlerTest extends LogEventHandlerTest {
 	 * @since 0.1.0
 	 */
 	@Test
-	void testHandleLogEvent_timestamp_isPrintedWithDate() throws Exception {
+	void testHandleLogEvent_timestamp_isPrintedWithDate() {
 		OutputStream out = injectAndGetOutputStream();
 
 		new Log4j2LogEventHandler().handleLogEvent(
@@ -100,7 +100,7 @@ class Log4j2LogEventHandlerTest extends LogEventHandlerTest {
 	 * @since 0.1.0
 	 */
 	@Test
-	void testHandleLogEvent_timestamp_isPrintedWithoutRespectingDateAndTimeZone() throws Exception {
+	void testHandleLogEvent_timestamp_isPrintedWithoutRespectingDateAndTimeZone() {
 		OutputStream out = injectAndGetOutputStream();
 
 		new Log4j2LogEventHandler().handleLogEvent(

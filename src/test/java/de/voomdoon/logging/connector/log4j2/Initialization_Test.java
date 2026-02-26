@@ -169,7 +169,7 @@ class Initialization_Test {
 	}
 
 	@Test
-	void test() throws Exception {
+	void test() {
 		Log4jTestAppender appender = new Log4jTestAppender();
 		addAppender(appender);
 
