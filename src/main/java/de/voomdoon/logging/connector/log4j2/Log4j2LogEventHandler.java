@@ -53,8 +53,9 @@ public class Log4j2LogEventHandler implements LogEventHandler {
 
 		/**
 		 * @since 0.1.0
+		 * @deprecated as {@link Message#getFormat()} is deprecated
 		 */
-		@Deprecated
+		@Deprecated(since = "0.1.0")
 		@Override
 		public String getFormat() {
 			// TODO implement getFormat
