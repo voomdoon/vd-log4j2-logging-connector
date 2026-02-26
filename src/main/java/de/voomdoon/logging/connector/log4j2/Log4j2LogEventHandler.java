@@ -58,7 +58,6 @@ public class Log4j2LogEventHandler implements LogEventHandler {
 		@Deprecated(since = "0.1.0")
 		@Override
 		public String getFormat() {
-			// TODO implement getFormat
 			throw new UnsupportedOperationException("'getFormat' not implemented at 'Log4j2LogEventHandler'!");
 		}
 
