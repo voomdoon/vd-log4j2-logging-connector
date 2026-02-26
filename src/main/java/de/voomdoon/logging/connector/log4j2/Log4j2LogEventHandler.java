@@ -29,7 +29,7 @@ public class Log4j2LogEventHandler implements LogEventHandler {
 	 *
 	 * @since 0.1.0
 	 */
-	private class MyMessage implements Message, TimestampMessage {
+	private class LogEventMessage implements Message, TimestampMessage {
 
 		/**
 		 * @since 0.1.0
@@ -39,15 +39,15 @@ public class Log4j2LogEventHandler implements LogEventHandler {
 		/**
 		 * @since 0.1.0
 		 */
-		private LogEvent logEvent;
+		private transient LogEvent logEvent;
 
 		/**
-		 * DOCME add JavaDoc for constructor MyMessage
+		 * DOCME add JavaDoc for constructor LogEventMessage
 		 * 
 		 * @param logEvent
 		 * @since 0.1.0
 		 */
-		public MyMessage(LogEvent logEvent) {
+		public LogEventMessage(LogEvent logEvent) {
 			this.logEvent = logEvent;
 		}
 
@@ -57,7 +57,7 @@ public class Log4j2LogEventHandler implements LogEventHandler {
 		@Override
 		public String getFormat() {
 			// TODO implement getFormat
-			throw new UnsupportedOperationException("'getFormat' not implemented at 'Message'!");
+			throw new UnsupportedOperationException("'getFormat' not implemented at 'Log4j2LogEventHandler'!");
 		}
 
 		/**
@@ -129,6 +129,6 @@ public class Log4j2LogEventHandler implements LogEventHandler {
 
 		// FEATURE thread
 		// FEATURE class and line
-		logger.log(level, new MyMessage(logEvent));
+		logger.log(level, new LogEventMessage(logEvent));
 	}
 }
