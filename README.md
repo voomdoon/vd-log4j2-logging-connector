@@ -1,6 +1,8 @@
 # vd-log4j2-logging-connector
 
 [![CI](https://github.com/voomdoon/vd-log4j2-logging-connector/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/voomdoon/vd-log4j2-logging-connector/actions/workflows/ci.yml?query=branch%3Amain)
+[![CodeQL Advanced](https://github.com/voomdoon/vd-log4j2-logging-connector/actions/workflows/codeql.yml/badge.svg)](https://github.com/voomdoon/vd-log4j2-logging-connector/actions/workflows/codeql.yml)
+[![Trivy](https://github.com/voomdoon/vd-log4j2-logging-connector/actions/workflows/trivy.yml/badge.svg)](https://github.com/voomdoon/vd-log4j2-logging-connector/actions/workflows/trivy.yml)
 [![License](https://img.shields.io/github/license/voomdoon/vd-log4j2-logging-connector)](https://github.com/voomdoon/vd-log4j2-logging-connector/blob/main/LICENSE)
 [![Java](https://img.shields.io/badge/Java-21-blue)](https://adoptium.net/)
 [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=voomdoon_vd-log4j2-logging-connector&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=voomdoon_vd-log4j2-logging-connector)
