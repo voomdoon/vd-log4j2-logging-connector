@@ -10,7 +10,7 @@
 
 	<groupId>de.voomdoon.logging</groupId>
 	<artifactId>vd-log4j2-logging-connector</artifactId>
-	<version>0.2.0-SNAPSHOT</version>
+	<version>0.2.0</version>
 
 	<name>vd-log4j2-logging-connector</name>
 	<description>Log4j 2 connector for vd-logging</description>
@@ -20,7 +20,7 @@
 		<url>https://github.com/voomdoon/vd-log4j2-logging-connector</url>
 		<connection>scm:git:https://github.com/voomdoon/vd-log4j2-logging-connector.git</connection>
 		<developerConnection>scm:git:git@github.com:voomdoon/vd-log4j2-logging-connector.git</developerConnection>
-		<tag>HEAD</tag>
+		<tag>0.2.0</tag>
 	</scm>
 
 	<properties>
