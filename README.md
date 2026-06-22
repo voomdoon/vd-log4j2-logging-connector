@@ -16,3 +16,25 @@
 [![Duplicated Lines (%)](https://sonarcloud.io/api/project_badges/measure?project=voomdoon_vd-log4j2-logging-connector&metric=duplicated_lines_density)](https://sonarcloud.io/summary/new_code?id=voomdoon_vd-log4j2-logging-connector)
 
 Connects [vd-logging](https://github.com/voomdoon/vd-logging) to [Log4j 2](https://logging.apache.org/log4j/2.x/)
+
+## Installation
+
+```xml
+<dependency>
+	<groupId>de.voomdoon.logging</groupId>
+	<artifactId>vd-log4j2-logging-connector</artifactId>
+	<version>0.2.0</version>
+</dependency>
+```
+
+## Usage
+
+Add this module next to `vd-logging` and Log4j 2 on the application classpath. The connector provides a `LogEventHandler` implementation that forwards `vd-logging` events to Log4j 2.
+
+```java
+Logger logger = LogManager.getLogger(MyClass.class);
+
+logger.info("message handled by Log4j 2");
+```
+
+Configure Log4j 2 with the usual `log4j2.xml`, `log4j2.properties`, or other Log4j 2 configuration mechanism.
