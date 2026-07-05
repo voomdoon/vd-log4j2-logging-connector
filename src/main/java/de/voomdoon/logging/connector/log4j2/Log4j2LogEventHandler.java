@@ -23,6 +23,12 @@ import de.voomdoon.logging.LogLevel;
 public class Log4j2LogEventHandler implements LogEventHandler {
 
 	/**
+	 * Creates a Log4j2 log event handler.
+	 */
+	public Log4j2LogEventHandler() {
+	}
+
+	/**
 	 * DOCME add JavaDoc for Log4j2LogEventHandler
 	 *
 	 * @author André Schulz
